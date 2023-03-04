@@ -3,59 +3,61 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.time.LocalDateTime;
+import java.util.logging.Level;
+import java.util.logging.Logger
 
 public class Servidor1 {
 
 
-    private static final Logger LOGGER = Logger.getLogger(name:"Servidor");
+    private static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger("Servidor");
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        LOGGER.log(java.util.logging.Level.INFO, "Iniciando o servidor");
+        ServerSocket servidor = new ServerSocket(50000);
 
-    public static void main(String[] args) throws IOException {
-        LOGGER.log(Level.INFO, msg:"Iniciando o servidor");
-        ServerSocket servidor = new ServerSocket(port: 4000);
+        while (true) {
+            LOGGER.log(java.util.logging.Level.INFO, "Aguardando conexão");
+            Socket conexao = servidor.accept();
 
-        LOGGER.(Level.INFO, msg:"Aguardando conexao");
-        Socket conexao = servidor.accept();
+            LOGGER.log(java.util.logging.Level.INFO, "Criando os objetos de comunicação");
+            ObjectOutputStream saida = new ObjectOutputStream(conexao.getOutputStream());
+            ObjectInputStream entrada = new ObjectInputStream(conexao.getInputStream());
 
-        LOGGER.log(Level.INFO, msg:"Criando os objetos de comunicaçao");
-        ObjectInputStream entrada = new ObjectInputStream(conexao.getInputStream());
-        ObjectOutputStream saida = new ObjectOutputStream(conexao.getOutputStream());
+            LOGGER.log(java.util.logging.Level.INFO, "Recebendo uma requisição");
+            Requisicao1 requisicao = (Requisicao1) entrada.readObject();
 
-        LOGGER.log(Level.INFO, msg:"Recebendo uma requisiçao";
-        Requisicao requisicao = (Requisicao) entrada.readObject();
+            LOGGER.log(java.util.logging.Level.INFO, "Processando a requisição");
+            Resposta1 resposta = new Resposta1();
+            resposta.setHorario(LocalDateTime.now());
 
-        LOGGER.log(level.INFO, msg:"Processa a requisiçao");
+            switch (requisicao.getOperacaoA()) {
+                case '+' :
+                    resposta.setResultado(requisicao.getC() + requisicao.getF());
+                    resposta.setStatus(200);
+                    resposta.setMensagem("A operação de adição foi realizada com sucesso");
+                    break;
 
-        Respota resposta = new Resposta();
-        resposta.setHorario(LocalDateTime.now());
+                case '-' :
+                    break;
 
-        switch(requisicao.getOperador()) {
+                case '*' :
+                    break;
 
-            case '+':
-                resposta.setResultado(requisicao.getC() + requisicao.getY());
-                resposta.setStatus(200);
-                resposta.SetMenssagem("A operaçao de adiçao foi realizada com sucesso");
-                break;
+                case '/' :
+                    break;
 
-            case '-':
-                break;
+                default:
+                    resposta.setResultado(null);
+                    resposta.setStatus(500);
+                    resposta.setMensagem("Operação inválida");
+                    break;
+            }
 
-            case '*':
-                break;
-
-            case '/':
-                break;
-
-            defaut:
-            resposta.setResultado(null);
-            resposta.setStatus(500);
-            resposta.setMensagem("Operaçao invalida");
-            break;
+            LOGGER.log(Level.INFO, "Enviando a resposta");
+            saida.writeObject(resposta);
         }
-
-        LOGGER.log(Level.INFO,)
     }
 
 

@@ -4,33 +4,60 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class Requisicao1 implements Serializable{
-    private Double resultado;
+   private Integer c;
 
-    private String mensagem;
+   private Integer f;
+   private Integer resultado1;
+   private Character operacaoA;
+   private Character operacaoB;
+   private Character operacaoC;
 
-    private LocalDateTime horario;
 
-    public Double getResultado() {
-        return resultado;
+    public Character getOperacaoC() {
+        return operacaoC;
     }
 
-    public void setResultado(Double resultado) {
-        this.resultado = resultado;
+    public void setOperacaoC(Character operacaoC) {
+        this.operacaoC = operacaoC;
     }
 
-    public String getMensagem() {
-        return mensagem;
+    public Character getOperacaoA() {
+        return operacaoA;
     }
 
-    public void setMensagem(String mensagem) {
-        this.mensagem = mensagem;
+    public void setOperacaoA(Character operacaoA) {
+        this.operacaoA = operacaoA;
     }
 
-    public LocalDateTime getHorario() {
-        return horario;
+    public Character getOperacaoB() {
+        return operacaoB;
     }
 
-    public void setHorario(LocalDateTime horario) {
-        this.horario = horario;
+    public void setOperacaoB(Character operacaoB) {
+        this.operacaoB = operacaoB;
+    }
+
+    public Integer getResultado1() {
+        return resultado1;
+    }
+
+    public void setResultado1(Integer resultado) {
+        this.resultado1 = resultado;
+    }
+
+    public Integer getC() {
+        return c;
+    }
+
+    public void setC(Integer c) {
+        this.c = c;
+    }
+
+    public Integer getF() {
+        return f;
+    }
+
+    public void setF(Integer f) {
+        this.f = f;
     }
 }

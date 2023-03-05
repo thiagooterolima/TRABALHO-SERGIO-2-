@@ -6,6 +6,16 @@ public class Requisicao3 implements Serializable {
     private Double Dolar;
     private Double Euro;
 
+    public Double getValor() {
+        return Valor;
+    }
+
+    public void setValor(Double valor) {
+        Valor = valor;
+    }
+
+    private Double Valor;
+
     public Double getReal() {
         return Real;
     }
@@ -39,5 +49,6 @@ public class Requisicao3 implements Serializable {
     }
 
     private Character operacao;
+
 
 }

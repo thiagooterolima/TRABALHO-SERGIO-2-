@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class Requisicao1 implements Serializable{
-   private Integer c;
+   private Double c;
 
-   private Integer f;
+   private Double f;
    private Integer resultado1;
    private Character operacaoA;
    private Character operacaoB;
@@ -45,19 +45,19 @@ public class Requisicao1 implements Serializable{
         this.resultado1 = resultado;
     }
 
-    public Integer getC() {
+    public Double getC() {
         return c;
     }
 
-    public void setC(Integer c) {
+    public void setC(Double c) {
         this.c = c;
     }
 
-    public Integer getF() {
+    public Double getF() {
         return f;
     }
 
-    public void setF(Integer f) {
+    public void setF(Double f) {
         this.f = f;
     }
 }

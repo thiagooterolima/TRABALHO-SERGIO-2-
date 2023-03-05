@@ -5,13 +5,16 @@ import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 public class Cliente3 {
 
     private static final Logger LOGGER = Logger.getLogger("Cliente");
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Requisicao3 requisicao = new Requisicao3();
         requisicao.setDolar(5.20);
-        requisicao.setReal(10.0);
+        requisicao.setReal(1.0);
+        requisicao.setEuro(5.53);
+        requisicao.setValor(1.0);
         requisicao.setOperacao('/');
 
 
@@ -28,14 +31,16 @@ public class Cliente3 {
         LOGGER.log(Level.INFO,"Recebendo uma resposta");
         Resposta3 resposta = (Resposta3) entrada.readObject();
 
-        System.out.println("Valor Do Real:" + requisicao.getReal());
-        System.out.println("Operação" + requisicao.getOperacao());
-        System.out.println("Valor Do Dolar" + requisicao.getDolar());
+        System.out.println("Valor Do Real " + requisicao.getReal());
+        System.out.println("Valor Do Dolar " + requisicao.getDolar());
+        System.out.println("Valor Do Euro " + requisicao.getEuro() + "\n");
 
-        System.out.println("Resultado: " + resposta.getResultado());
+        System.out.println("Real Convertido em Dolar: " + resposta.getResultado());
+        System.out.println("Real Convertido em Euro: " + resposta.getResultado1());
+        System.out.println("Dolar Convertido em Real: " + resposta.getResultado2());
+        System.out.println("Euro Convertido em Real: " + resposta.getResultado3() + "\n");
         System.out.println("Horario: " + resposta.getHorario());
-        System.out.println("Status: " + resposta.getStatus());
-        System.out.println("Mensagem " +resposta.getMensagem());
+        System.out.println("Mensagem : " +resposta.getMensagem());
 
 
     }

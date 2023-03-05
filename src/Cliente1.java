@@ -9,8 +9,8 @@ public class Cliente1 {
     private static final Logger LOGGER = Logger.getLogger("Cliente");
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Requisicao1 requisicao = new Requisicao1();
-        requisicao.setC(0);
-        requisicao.setF(32);
+        requisicao.setC(0.0);
+        requisicao.setF(32.0);
         requisicao.setOperacaoA('+');
         requisicao.setOperacaoA('/');
         requisicao.setOperacaoA('*');

@@ -33,10 +33,12 @@ public class Servidor1 {
             resposta.setHorario(LocalDateTime.now());
 
             switch (requisicao.getOperacaoA()) {
-                case '+' :
-                    resposta.setResultado(requisicao.getC() + requisicao.getF());
-                    resposta.setStatus(200);
-                    resposta.setMensagem("A operação de adição foi realizada com sucesso");
+                case '/' + '*' + '-':
+                    resposta.setResultado((requisicao.getF() - 32) * (5/9));
+                    resposta.setMensagem("A conversao de Fahrenheit para Celsius foi realizada: " + resposta);
+
+                    resposta.setResultado((requisicao.getC() * (9/5) + 32));
+                    resposta.setMensagem("A conversao de Celsius para Fahrenheit foi realizada: " + resposta);
                     break;
 
                 case '-' :

@@ -14,6 +14,7 @@ public class Cliente1 {
         requisicao.setOperacaoA('+');
         requisicao.setOperacaoA('/');
         requisicao.setOperacaoA('*');
+        requisicao.setOperacaoA('-');
 
 
 
